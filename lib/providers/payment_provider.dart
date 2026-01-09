@@ -69,7 +69,7 @@ class PaymentProvider extends ChangeNotifier {
         })
         .eq('id', paymentId);
 
-    // 🔥 REFRESH LIST SETELAH UPDATE
+    //
     await fetchPayments();
 
     isLoading = false;
@@ -179,7 +179,7 @@ class PaymentProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // ⚠️ TANPA nested rooms (lebih stabil)
+      //
       final res = await _supabase
           .from('payments')
           .select('''

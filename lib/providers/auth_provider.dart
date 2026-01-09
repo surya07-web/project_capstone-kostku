@@ -6,15 +6,21 @@ class AuthProvider extends ChangeNotifier {
   final AuthService _authService = AuthService();
   final SupabaseClient _supabase = Supabase.instance.client;
 
-  bool isLoading = true; // 🔑 WAJIB TRUE DI AWAL
+  // ==========================
+  // STATE AUTH
+  // ==========================
+  bool isLoading = true;
   String? role;
   Session? _session;
 
   Session? get session => _session;
   bool get isLoggedIn => _session != null;
 
+  // ==========================
+  // CO
+  // ==========================
   AuthProvider() {
-    _init(); // 🔥 INIT ASYNC
+    _init(); //
   }
 
   // ==========================

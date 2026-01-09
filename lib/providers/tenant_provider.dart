@@ -61,13 +61,11 @@ class TenantProvider extends ChangeNotifier {
     notifyListeners();
 
     try {
-      // 🔴 1️⃣ CEK TENANT AKTIF (WAJIB)
-      // 🔴 CEK TENANT AKTIF (VERSI AMAN SEMUA SDK)
       final existingActiveTenant = await _supabase
           .from('tenants')
           .select('id')
           .eq('user_email', userEmail)
-          .filter('check_out_date', 'is', null); // ✅ PALING AMAN
+          .filter('check_out_date', 'is', null); //
 
       if (existingActiveTenant.isNotEmpty) {
         throw Exception(
