@@ -72,6 +72,80 @@ flutter pub get
 #Jalankan Aplikasi
 flutter run
 
+---
+
+## 🗄️ Database Schema
+
+Aplikasi KostKu menggunakan database PostgreSQL (Supabase).
+Berikut adalah tabel utama yang digunakan:
+
+### 📌 users (Supabase Auth)
+Digunakan untuk autentikasi pengguna.
+
+| Field | Tipe |
+|------|------|
+| id | uuid |
+| email | text |
+| created_at | timestamp |
+
+---
+
+### 📌 rooms
+Menyimpan data kamar kost.
+
+| Field | Tipe |
+|------|------|
+| id | uuid |
+| number | text |
+| type | text |
+| price | int |
+| facilities | text |
+| status | text (available / occupied) |
+| photo_url | text |
+
+---
+
+### 📌 tenants
+Menyimpan data penyewa.
+
+| Field | Tipe |
+|------|------|
+| id | uuid |
+| user_id | uuid |
+| user_email | text |
+| room_id | uuid |
+| check_in_date | timestamp |
+| check_out_date | timestamp |
+| emergency_contact | text |
+
+---
+
+### 📌 payments
+Menyimpan data pembayaran.
+
+| Field | Tipe |
+|------|------|
+| id | uuid |
+| tenant_id | uuid |
+| month | text (YYYY-MM) |
+| amount | int |
+| status | text (paid / unpaid) |
+| paid_date | timestamp |
+| receipt_photo | text |
+
+---
+
+### 📌 room_requests (opsional)
+Digunakan untuk pengembangan fitur request kamar.
+
+| Field | Tipe |
+|------|------|
+| id | uuid |
+| room_id | uuid |
+| user_email | text |
+| status | text |
+
+
 ## 🖼️ Screenshot Demo Aplikasi
 
 ### 🔐 Halaman Login
